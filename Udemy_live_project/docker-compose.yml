@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    image: deamonbhatnagar/nodeblogapp
+    
+    ports:
+      - '3000:3000'
+    restart: always
+    links:
+      - mongo
+    volumes: 
+      - myremote-volume:/usr/src/app
+      - /usr/src/app/node_modules
+
+  mongo: 
+    image: mongo
+    ports: 
+      - '27017:27017'
+
+volume:
+  myremote-volume:
+    
